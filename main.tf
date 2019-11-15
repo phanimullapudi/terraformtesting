@@ -17,6 +17,11 @@ resource "aws_instance" "example" {
         tags = {
         Name = "terraform-example"
     } 
+
+    lifecycle {
+        create_before_destroy = true
+    }
+
 }
 
 resource "aws_security_group" "instance" {
@@ -28,4 +33,9 @@ resource "aws_security_group" "instance" {
         protocol    = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
+}
+
+output "public_ip" {
+    value = "${aws_instance.example.public_ip}"
+
 }
