@@ -7,10 +7,12 @@ terraform {
 }
 
 resource "aws_db_instance" "example" {
-    engine              = "mysql"
-    allocated_storage   = 10
-    instance_class      = "db.t3.micro"
-    name                = "terraform_example"
-    username            = "admin"
-    password            = "${var.db_password}"
+    engine                      = "mysql"
+    allocated_storage           = 10
+    instance_class              = "db.t3.micro"
+    name                        = "terraform_example"
+    username                    = "admin"
+    password                    = "${var.db_password}"
+    final_snapshot_identifier   = "tftesting-mysql-backup"
+    skip_final_snapshot         = true
 }
