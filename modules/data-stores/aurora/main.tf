@@ -22,14 +22,6 @@ resource "aws_rds_cluster_instance" "cluster_instances" {
   promotion_tier               = "0"
   performance_insights_enabled = var.performance_insights_enabled
 
-
-  tags = {
-    "Adobe.ArchPath" = "EC.Magento.PaaS.EKS"
-    "Adobe.Environment" = "Perf"
-    "Adobe.Owner" = "Magento PaaS Engineering"
-    "Adobe.CostCenter" = "103060"
-    "Adobe.PCIData" = "false"
-  }
 }
 
 resource "aws_rds_cluster" "default" {
